@@ -1,5 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
+
+#imports
 import sys
 from functools import partial
 from PyQt5.QtCore import QEvent, QUrl, Qt
@@ -11,8 +13,6 @@ from PyQt5.QtMultimediaWidgets import QVideoWidget
 from PyQt5 import QtGui
 from PyQt5 import QtWidgets
 from PyQt5.uic import loadUi
-
-#imports
 from moviepy.editor import *
 import speech_recognition as sr
 
@@ -21,14 +21,10 @@ class MainWindow(QMainWindow):
     def __init__(self):
         super(MainWindow,self).__init__()
         loadUi("SI_main.ui",self)
-
-        
+        # variables       
         self.ruta = ""
         self.dir = ""
         # definir elementos de la UI y acciones/funciones asociadas
-        #self.widget = QWidget(self)
-        #self.layout = QVBoxLayout()
-        #self.bottom_layout = QHBoxLayout()
         self.setWindowTitle("Speech to text from .mp4")
 
         self.video_widget = QVideoWidget(self)
@@ -50,14 +46,7 @@ class MainWindow(QMainWindow):
         self.media_player.durationChanged.connect(partial(self.seek_slider.setRange, 0))
         self.media_player.stateChanged.connect(self.state_changed)
         self.video_widget.installEventFilter(self)
-        """
-        
-        self.resize(800, 600)
-        self.layout.setContentsMargins(0, 0, 0, 0)
-        self.bottom_layout.setContentsMargins(0, 0, 0, 0)
-        self.widget.setLayout(self.layout)
-        self.setCentralWidget(self.widget)
-        """
+
     def play_clicked(self):
         if (self.media_player.state() in
             (QMediaPlayer.PausedState, QMediaPlayer.StoppedState)):
@@ -78,7 +67,7 @@ class MainWindow(QMainWindow):
                 #clean_audio = AudioClip(audio_data)
                 #videoclip.audio.write_audiofile(self.dir+"/"+"audio.wav",codec='pcm_s16le')
                 # recognize (convert from speech to text)
-                text = r.recognize_google(audio_clr, language = "es-ES", show_all=True)
+                text = r.recognize_google(audio_clr, language = "es-ES")
                 print(text)
                 #source.write(audio_clr)
                 # comprobar audio limpiado
@@ -137,11 +126,8 @@ class MainWindow(QMainWindow):
 app=QtWidgets.QApplication(sys.argv)
 #crear instancia clase initial
 mainwindow=MainWindow()
-
 #Stack
 widget=QtWidgets.QStackedWidget()
 widget.addWidget(mainwindow)
 widget.show()
 app.exec()
-
-    
