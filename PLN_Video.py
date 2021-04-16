@@ -28,6 +28,9 @@ class MainWindow(QMainWindow):
         # variables       
         self.ruta = ""
         self.dir = ""
+        self.txt_org.setText("Texto no procesado. Please, inicie un video para procesar")
+        self.txt_mod.setText("Texto no procesado. Please, inicie un video para procesar")
+        self.txt_tag.setText("No hay texto modificado, por lo que no se pueden añadir tags. Please, inicie un video para procesar")
 
         # definir elementos de la UI y acciones/funciones asociadas
         self.setWindowTitle("Speech to text from .mp4")
@@ -55,9 +58,9 @@ class MainWindow(QMainWindow):
         self.video_widget.installEventFilter(self)
 
         #Textos: Botones y campos de texto
-        self.save_button_org.clicked.connect(self.save_txt)
-        self.save_button_mod.clicked.connect(self.save_txt)
-        self.save_button_tag.clicked.connect(self.save_txt)
+        self.save_button_org.clicked.connect(self.save_txt_org)
+        self.save_button_mod.clicked.connect(self.save_txt_mod)
+        self.save_button_tag.clicked.connect(self.save_txt_tag)
         self.procesar_txt_button.clicked.connect(self.procesar_txt)
         
 
@@ -71,12 +74,12 @@ class MainWindow(QMainWindow):
             
             #generar pista audio a partir del video
             videoclip = VideoFileClip(self.dir+"/"+self.ruta)
-            videoclip.audio.write_audiofile(self.dir+"/"+"audio.wav",codec='pcm_s16le')
+            videoclip.audio.write_audiofile("resultados/audio/"+str(self.ruta.split(".")[0])+"_audio.wav",codec='pcm_s16le')
             print(videoclip)
             
             #limpieza de audio
             r = sr.Recognizer()
-            with sr.AudioFile(self.dir+"/"+"audio.wav") as source:
+            with sr.AudioFile("resultados/audio/"+str(self.ruta.split(".")[0])+"_audio.wav") as source:
         
                 r.adjust_for_ambient_noise(source,0.75)
                 audio_clr = r.record(source)
@@ -104,8 +107,20 @@ class MainWindow(QMainWindow):
     
 
     # pulsar botones Guardar
-    def save_txt(self):
-        print("guardado")
+    def save_txt_org(self):
+        txt_to_save = open("resultados/texto/"+str(self.ruta.split(".")[0])+"_Texto_Original.txt", 'w')
+        txt_to_save.write(self.txt_org.toPlainText())
+        txt_to_save.close()
+    
+    def save_txt_mod(self):
+        txt_to_save = open("resultados/texto/"+str(self.ruta.split(".")[0])+"_Texto_Modificado.txt", 'w')
+        txt_to_save.write(self.txt_mod.toPlainText())
+        txt_to_save.close()
+    
+    def save_txt_tag(self):
+        txt_to_save = open("resultados/texto/"+str(self.ruta.split(".")[0])+"_Texto_Con_Tags.txt", 'w')
+        txt_to_save.write(self.txt_tag.toPlainText())
+        txt_to_save.close()
 
 
     # pulsar boton procesar texto
