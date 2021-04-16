@@ -7,13 +7,13 @@
     <x>0</x>
     <y>0</y>
     <width>800</width>
-    <height>600</height>
+    <height>835</height>
    </rect>
   </property>
   <property name="minimumSize">
    <size>
     <width>800</width>
-    <height>600</height>
+    <height>800</height>
    </size>
   </property>
   <property name="maximumSize">
@@ -24,6 +24,273 @@
   </property>
   <property name="windowTitle">
    <string>MainWindow</string>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">/*Copyright (c) DevSec Studio. All rights reserved.
+
+MIT License
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the &quot;Software&quot;), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED *AS IS*, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+*/
+
+/*-----QWidget-----*/
+QWidget
+{
+    color: #aaa;
+    background-color: #323232;
+
+}
+
+
+/*-----QLabel-----*/
+QLabel
+{
+	background-color: transparent;
+	color: #fff;
+
+}
+
+
+/*-----QMenuBar-----*/
+QMenuBar 
+{
+    background-color: #323232;
+
+}
+
+
+QMenuBar::item
+{
+    background: transparent;
+
+}
+
+
+QMenuBar::item:selected
+{
+    background: #444;
+
+}
+
+
+QMenuBar::item:pressed
+{
+    border: 1px solid #000;
+    background-color: #444;
+    margin-bottom:-1px;
+    padding-bottom:1px;
+
+}
+
+
+/*-----QMenu-----*/
+QMenu
+{
+    background-color: #444;
+    border: 1px solid #222;
+    padding: 4px;
+    padding-right: 0px;
+
+}
+
+
+QMenu::item
+{
+    background-color: transparent;
+    padding: 2px 20px 2px 20px;
+
+}
+
+
+QMenu::item:disabled
+{
+    color: #555;
+    background-color: transparent;
+    padding: 2px 20px 2px 20px;
+
+}
+
+
+QMenu::item:selected
+{
+    background-color: #55aaff;
+    color: #fff;
+
+}
+
+
+/*-----QToolTip-----*/
+QToolTip
+{
+    border: 1px solid #222;
+    background-color: #333;
+    color: #aaa;
+
+}
+
+
+/*-----QToolButton-----*/
+QToolButton
+{
+    color: #b1b1b1;
+    background-color: QLinearGradient( x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #565656, stop: 0.1 #525252, stop: 0.5 #4e4e4e, stop: 0.9 #4a4a4a, stop: 1 #464646);
+    border-width: 1px;
+    border-color: #1e1e1e;
+    border-style: solid;
+	margin-right: 2px;
+	padding: 3px;
+
+}
+
+
+QToolButton:pressed
+{
+    background-color: QLinearGradient( x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #2d2d2d, stop: 0.1 #2b2b2b, stop: 0.5 #292929, stop: 0.9 #282828, stop: 1 #252525);
+
+}
+
+
+QToolButton:checked
+{
+    background-color: gray;
+
+}
+
+/*-----QLineEdit-----*/
+QLineEdit{
+	background-color: #fff;
+	color: #000;
+	selection-color: #fff;
+	selection-background-color: #507098;
+
+}
+
+
+/*-----QTreeView-----*/
+QTreeView 
+{
+	background-color: #434343;
+    border: 0.5px solid rgba(108,108,108,75);
+
+}
+
+
+QTreeView::item, 
+QTreeView::branch 
+{
+    background: transparent;
+    color: #DDD;
+
+}
+
+
+QTreeView::item:hover, 
+QTreeView::branch:hover 
+{
+    background-color: #55aaff;
+    color: #DDD;
+
+}
+
+
+QTreeView::item:selected, 
+QTreeView::branch:selected 
+{
+    background-color: #55aaff;
+    color: #fff;
+
+}
+
+
+/*-----QScrollBar-----*/
+QScrollBar:horizontal 
+{
+    background-color: #333;
+    height: 8px;
+    margin: 0px;
+    padding: 0px;
+
+}
+
+
+QScrollBar::handle:horizontal 
+{
+    border: 1px solid #111;
+    background-color: #535353;
+
+}
+
+
+QScrollBar::add-line:horizontal, QScrollBar::sub-line:horizontal,
+QScrollBar::add-page:horizontal, QScrollBar::sub-page:horizontal 
+{
+    width: 0px;
+    background-color: transparent;
+
+}
+
+
+QScrollBar:vertical 
+{
+    background-color: #333;
+    width: 8px;
+    margin: 0;
+
+}
+
+
+QScrollBar::handle:vertical 
+{
+    border: 1px solid #111;
+    background-color: #535353;
+
+}
+
+
+QScrollBar::add-line:vertical, QScrollBar::sub-line:vertical,
+QScrollBar::add-page:vertical, QScrollBar::sub-page:vertical 
+{
+    height: 0px;
+    background-color: transparent;
+
+}
+/*---Edit for tabs*/
+QTabBar{
+border-width: 20px;
+color: black;
+}
+QTabBar::tab 
+{
+    background: #3e3e3e;
+    color: #b1b1b1; 
+    border-color: #48555E;
+
+}
+
+QTabBar::tab:selected, 
+QTabBar::tab:hover 
+{
+    border-top-color: black;
+    border-color: #40494E;
+    color: #fff;
+    background:#394a41; 
+}
+</string>
   </property>
   <widget class="QWidget" name="centralwidget">
    <property name="maximumSize">
@@ -52,11 +319,24 @@
          </property>
          <layout class="QVBoxLayout" name="verticalLayout_2">
           <item>
-           <widget class="QFrame" name="frame">
+           <widget class="QLabel" name="label_5">
+            <property name="maximumSize">
+             <size>
+              <width>16777215</width>
+              <height>20</height>
+             </size>
+            </property>
+            <property name="text">
+             <string>  Speech To Text - Reproductor de Vídeo</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QFrame" name="frame_vid">
             <property name="minimumSize">
              <size>
               <width>0</width>
-              <height>280</height>
+              <height>200</height>
              </size>
             </property>
             <property name="frameShape">
@@ -73,11 +353,30 @@
            </widget>
           </item>
           <item>
-           <widget class="QFrame" name="frame_controles">
+           <widget class="QLabel" name="label_4">
             <property name="maximumSize">
              <size>
               <width>16777215</width>
+              <height>20</height>
+             </size>
+            </property>
+            <property name="text">
+             <string>     Menú:</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QFrame" name="frame_controles">
+            <property name="minimumSize">
+             <size>
+              <width>0</width>
               <height>100</height>
+             </size>
+            </property>
+            <property name="maximumSize">
+             <size>
+              <width>16777215</width>
+              <height>150</height>
              </size>
             </property>
             <property name="frameShape">
@@ -88,7 +387,89 @@
             </property>
             <layout class="QHBoxLayout" name="horizontalLayout">
              <item>
-              <widget class="QFrame" name="fram_vid">
+              <widget class="QFrame" name="frame_2">
+               <property name="maximumSize">
+                <size>
+                 <width>200</width>
+                 <height>300</height>
+                </size>
+               </property>
+               <property name="frameShape">
+                <enum>QFrame::StyledPanel</enum>
+               </property>
+               <property name="frameShadow">
+                <enum>QFrame::Raised</enum>
+               </property>
+               <layout class="QHBoxLayout" name="horizontalLayout_6">
+                <item>
+                 <layout class="QVBoxLayout" name="verticalLayout_3">
+                  <item>
+                   <widget class="QPushButton" name="search_button">
+                    <property name="minimumSize">
+                     <size>
+                      <width>0</width>
+                      <height>30</height>
+                     </size>
+                    </property>
+                    <property name="maximumSize">
+                     <size>
+                      <width>16777215</width>
+                      <height>50</height>
+                     </size>
+                    </property>
+                    <property name="layoutDirection">
+                     <enum>Qt::LeftToRight</enum>
+                    </property>
+                    <property name="text">
+                     <string>Buscar</string>
+                    </property>
+                   </widget>
+                  </item>
+                  <item>
+                   <widget class="QPushButton" name="stop_button">
+                    <property name="minimumSize">
+                     <size>
+                      <width>0</width>
+                      <height>30</height>
+                     </size>
+                    </property>
+                    <property name="maximumSize">
+                     <size>
+                      <width>16777215</width>
+                      <height>50</height>
+                     </size>
+                    </property>
+                    <property name="text">
+                     <string>Volver al principio</string>
+                    </property>
+                   </widget>
+                  </item>
+                  <item>
+                   <widget class="QPushButton" name="play_button">
+                    <property name="minimumSize">
+                     <size>
+                      <width>0</width>
+                      <height>30</height>
+                     </size>
+                    </property>
+                    <property name="maximumSize">
+                     <size>
+                      <width>16777215</width>
+                      <height>50</height>
+                     </size>
+                    </property>
+                    <property name="text">
+                     <string>Iniciar video</string>
+                    </property>
+                   </widget>
+                  </item>
+                 </layout>
+                </item>
+               </layout>
+              </widget>
+             </item>
+             <item>
+              <widget class="QFrame" name="frame_video_ctrl">
                <property name="frameShape">
                 <enum>QFrame::StyledPanel</enum>
                </property>
@@ -126,7 +507,7 @@
               </widget>
              </item>
              <item>
-              <widget class="QFrame" name="frame_sonido">
+              <widget class="QFrame" name="frame_sonido_ctrl">
                <property name="frameShape">
                 <enum>QFrame::StyledPanel</enum>
                </property>
@@ -135,73 +516,18 @@
                </property>
                <layout class="QHBoxLayout" name="horizontalLayout_3">
                 <item>
-                 <widget class="QSlider" name="volume_slider">
-                  <property name="orientation">
-                   <enum>Qt::Vertical</enum>
-                  </property>
-                 </widget>
-                </item>
-                <item>
                  <widget class="QLabel" name="volume_label">
                   <property name="text">
                    <string>Volumen:</string>
                   </property>
                  </widget>
                 </item>
-               </layout>
-              </widget>
-             </item>
-            </layout>
-           </widget>
-          </item>
-          <item>
-           <widget class="QFrame" name="botonera_2">
-            <property name="maximumSize">
-             <size>
-              <width>16777215</width>
-              <height>200</height>
-             </size>
-            </property>
-            <property name="frameShape">
-             <enum>QFrame::StyledPanel</enum>
-            </property>
-            <property name="frameShadow">
-             <enum>QFrame::Raised</enum>
-            </property>
-            <layout class="QVBoxLayout" name="verticalLayout">
-             <item>
-              <widget class="QFrame" name="frame_2">
-               <property name="frameShape">
-                <enum>QFrame::StyledPanel</enum>
-               </property>
-               <property name="frameShadow">
-                <enum>QFrame::Raised</enum>
-               </property>
-               <layout class="QHBoxLayout" name="horizontalLayout_6">
                 <item>
-                 <layout class="QVBoxLayout" name="verticalLayout_3">
-                  <item>
-                   <widget class="QPushButton" name="search_button">
-                    <property name="text">
-                     <string>Buscar</string>
-                    </property>
-                   </widget>
-                  </item>
-                  <item>
-                   <widget class="QPushButton" name="stop_button">
-                    <property name="text">
-                     <string>Volver al principio</string>
-                    </property>
-                   </widget>
-                  </item>
-                  <item>
-                   <widget class="QPushButton" name="play_button">
-                    <property name="text">
-                     <string>Iniciar video</string>
-                    </property>
-                   </widget>
-                  </item>
-                 </layout>
+                 <widget class="QSlider" name="volume_slider">
+                  <property name="orientation">
+                   <enum>Qt::Vertical</enum>
+                  </property>
+                 </widget>
                 </item>
                </layout>
               </widget>
@@ -211,6 +537,12 @@
           </item>
           <item>
            <widget class="QFrame" name="frame_txts">
+            <property name="maximumSize">
+             <size>
+              <width>16777215</width>
+              <height>300</height>
+             </size>
+            </property>
             <property name="frameShape">
              <enum>QFrame::StyledPanel</enum>
             </property>
@@ -218,6 +550,13 @@
              <enum>QFrame::Raised</enum>
             </property>
             <layout class="QVBoxLayout" name="verticalLayout_6">
+             <item>
+              <widget class="QLabel" name="label_2">
+               <property name="text">
+                <string>  Texto original:</string>
+               </property>
+              </widget>
+             </item>
              <item>
               <widget class="QFrame" name="frame_txt_org">
                <property name="frameShape">
@@ -236,12 +575,34 @@
                 </item>
                 <item>
                  <widget class="QPushButton" name="save_button_org">
+                  <property name="enabled">
+                   <bool>false</bool>
+                  </property>
+                  <property name="minimumSize">
+                   <size>
+                    <width>120</width>
+                    <height>0</height>
+                   </size>
+                  </property>
+                  <property name="maximumSize">
+                   <size>
+                    <width>120</width>
+                    <height>16777215</height>
+                   </size>
+                  </property>
                   <property name="text">
                    <string>Guardar</string>
                   </property>
                  </widget>
                 </item>
                </layout>
+              </widget>
+             </item>
+             <item>
+              <widget class="QLabel" name="label">
+               <property name="text">
+                <string>  Texto a editar:</string>
+               </property>
               </widget>
              </item>
              <item>
@@ -257,20 +618,43 @@
                  <widget class="QTextEdit" name="txt_mod"/>
                 </item>
                 <item>
-                 <widget class="QPushButton" name="procesar_txt_button">
-                  <property name="text">
-                   <string>Procesar texto editado</string>
-                  </property>
-                 </widget>
-                </item>
-                <item>
-                 <widget class="QPushButton" name="save_button_mod">
-                  <property name="text">
-                   <string>Guardar</string>
-                  </property>
-                 </widget>
+                 <layout class="QVBoxLayout" name="verticalLayout_8">
+                  <item>
+                   <widget class="QPushButton" name="procesar_txt_button">
+                    <property name="enabled">
+                     <bool>false</bool>
+                    </property>
+                    <property name="maximumSize">
+                     <size>
+                      <width>120</width>
+                      <height>16777215</height>
+                     </size>
+                    </property>
+                    <property name="text">
+                     <string>Procesar texto editado</string>
+                    </property>
+                   </widget>
+                  </item>
+                  <item>
+                   <widget class="QPushButton" name="save_button_mod">
+                    <property name="enabled">
+                     <bool>false</bool>
+                    </property>
+                    <property name="text">
+                     <string>Guardar</string>
+                    </property>
+                   </widget>
+                  </item>
+                 </layout>
                 </item>
                </layout>
+              </widget>
+             </item>
+             <item>
+              <widget class="QLabel" name="label_3">
+               <property name="text">
+                <string>  Texto procesado:</string>
+               </property>
               </widget>
              </item>
              <item>
@@ -291,6 +675,15 @@
                 </item>
                 <item>
                  <widget class="QPushButton" name="save_button_tag">
+                  <property name="enabled">
+                   <bool>false</bool>
+                  </property>
+                  <property name="minimumSize">
+                   <size>
+                    <width>120</width>
+                    <height>0</height>
+                   </size>
+                  </property>
                   <property name="text">
                    <string>Guardar</string>
                   </property>
@@ -312,6 +705,8 @@
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
  </widget>
- <resources/>
+ <resources>
+  <include location="stylesheet.qrc"/>
+ </resources>
  <connections/>
 </ui>

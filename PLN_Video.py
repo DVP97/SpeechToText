@@ -5,9 +5,7 @@
 import sys
 from functools import partial
 from PyQt5.QtCore import QEvent, QUrl, Qt
-from PyQt5.QtWidgets import (QApplication, QDialog, QHBoxLayout, QMainWindow,
-                             QWidget, QPushButton, QSlider,
-                             QVBoxLayout, QFileDialog, QLabel)
+from PyQt5.QtWidgets import (QApplication, QDialog, QHBoxLayout, QMainWindow, QWidget, QPushButton, QSlider,QVBoxLayout, QFileDialog, QLabel)
 from PyQt5.QtMultimedia import QMediaContent, QMediaPlayer
 from PyQt5.QtMultimediaWidgets import QVideoWidget
 from PyQt5 import QtGui
@@ -28,9 +26,9 @@ class MainWindow(QMainWindow):
         # variables       
         self.ruta = ""
         self.dir = ""
-        self.txt_org.setText("Texto no procesado. Please, inicie un video para procesar")
-        self.txt_mod.setText("Texto no procesado. Please, inicie un video para procesar")
-        self.txt_tag.setText("No hay texto modificado, por lo que no se pueden añadir tags. Please, inicie un video para procesar")
+        self.txt_org.setText("Texto no procesado. Por favor, inicie un video para procesar")
+        self.txt_mod.setText("Texto no procesado. Por favor, inicie un video para procesar")
+        self.txt_tag.setText("No hay texto modificado, por lo que no se pueden añadir tags. Por favor, inicie un video para procesar")
 
         # definir elementos de la UI y acciones/funciones asociadas
         self.setWindowTitle("Speech to text from .mp4")
@@ -61,8 +59,7 @@ class MainWindow(QMainWindow):
         self.save_button_org.clicked.connect(self.save_txt_org)
         self.save_button_mod.clicked.connect(self.save_txt_mod)
         self.save_button_tag.clicked.connect(self.save_txt_tag)
-        self.procesar_txt_button.clicked.connect(self.procesar_txt)
-        
+        self.procesar_txt_button.clicked.connect(self.procesar_txt)        
 
 
     # pulsar boton play
@@ -94,6 +91,9 @@ class MainWindow(QMainWindow):
                 # comprobar audio limpiado
                 self.txt_org.setText(text)
                 self.txt_mod.setText(text)
+                self.save_button_org.setEnabled(True)
+                self.save_button_mod.setEnabled(True)
+                self.procesar_txt_button.setEnabled(True)
             #txt_org = r.recognize_google(audio_clr)
             #print(txt_org)
             
@@ -112,11 +112,13 @@ class MainWindow(QMainWindow):
         txt_to_save.write(self.txt_org.toPlainText())
         txt_to_save.close()
     
+
     def save_txt_mod(self):
         txt_to_save = open("resultados/texto/"+str(self.ruta.split(".")[0])+"_Texto_Modificado.txt", 'w')
         txt_to_save.write(self.txt_mod.toPlainText())
         txt_to_save.close()
     
+
     def save_txt_tag(self):
         txt_to_save = open("resultados/texto/"+str(self.ruta.split(".")[0])+"_Texto_Con_Tags.txt", 'w')
         txt_to_save.write(self.txt_tag.toPlainText())
@@ -126,6 +128,8 @@ class MainWindow(QMainWindow):
     # pulsar boton procesar texto
     def procesar_txt(self):
         self.txt_tag.setText(pruebaBusqueda.procesarTxt(self.txt_mod.toPlainText()))
+        self.save_button_tag.setEnabled(True)
+
 
     # manejo pause/play del video
     def state_changed(self, newstate):
@@ -143,7 +147,8 @@ class MainWindow(QMainWindow):
         if event.type() == QEvent.MouseButtonDblClick:
             obj.setFullScreen(not obj.isFullScreen())
         return False
-    
+   
+
     # Abrir archivo de video
     def openFile(self):
         print("Done")
@@ -170,6 +175,7 @@ class MainWindow(QMainWindow):
             
             self.play_button.setEnabled(True)
             self.stop_button.setEnabled(True)
+
 
 #inicializar app
 app=QtWidgets.QApplication(sys.argv)
