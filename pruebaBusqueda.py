@@ -3,7 +3,7 @@ def procesarTxt(string):
     # posible mejora: nltk para stematizar palabras de string
     
     # variables
-    stopwords = [["bajo marcha","GD"],["subo marcha","GU"],["intermitente izquierdo","LB"],["intermitente derecho","RB"],["embrague","G"],["acelero","T"],["freno","B"]]
+    stopwords = [["bajo marcha","GD"],["punto muerto","GD"],["bajo primera","GD"],["bajo segunda","GD"],["bajo tercera","GD"],["bajo cuarta","GD"],["bajo quinta","GD"],["subo marcha","GU"],["subo primera","GU"],["subo segunda","GU"],["subo tercera","GU"],["subo cuarta","GU"],["subo quinta","GU"],["subo sexta","GU"],["intermitente izquierdo","LB"],["intermitente derecho","RB"],["embrague","G"],["acelero","T"],["freno","B"],]
     new_text = []
 
     split = string.split()
